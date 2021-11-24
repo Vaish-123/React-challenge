@@ -1,19 +1,22 @@
-import './App.css';
-import Txt from './components/text'
+import { useState } from 'react'
+import Counter from './components/counter';
 function App() {
-  const abc = 'here'
+  const [count, setCount] = useState(0);
+  const addCount = () => {
+    setCount(count + 1)
+  }
+  let obj={
+    title:'1st counter',
+    c:count
+  }
   return (
     <div>
-      <Welcome/>
-      <h3>React</h3>
-      <p style={{ backgroundColor: "grey" }}>something {abc}</p>
-      <Txt data={abc}/>
+      <h1>Hello user</h1>
+      <Counter {...obj}/>
+      <Counter title='2nd counter' c={count}/>
+      <button onClick={addCount}>Add</button>
     </div>
   );
 }
 
 export default App;
-
-function Welcome(){
-  return(<h1 className='wlcm'>Welcome</h1>)
-}
